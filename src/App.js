@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import AuthScreen from './screens/Auth/AuthScreen'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import HomeScreen from './screens/Home/HomeScreen'
+import ChatScreen from './screens/Chat/ChatScreen'
+import { AuthContext } from './context/AuthContext'
 
-function App() {
+
+const App = () => {
+  const [user,setUser] = useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <AuthContext.Provider value={{user,setUser}}>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<AuthScreen />} />
+        <Route path='/chats' element={<HomeScreen />} />
+        <Route path='/chat/:id' element={<ChatScreen />} />
+      </Routes>
+    </BrowserRouter>
+    </AuthContext.Provider>
+    </>
+  )
 }
 
-export default App;
+export default App

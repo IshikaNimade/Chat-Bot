@@ -1,0 +1,17 @@
+
+.appBarRightContainer {
+    background-color:  #8FE298;
+    width: 120px;
+    display: flex;
+    flex-direction:  row;
+    padding: 8px;
+    justify-content: center;
+    border-radius : 10px;
+    cursor: pointer
+}
+
+.loginContainer {
+    width: 300px;
+    height: 400px;
+    flex-direction: column;
+}
